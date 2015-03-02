@@ -176,8 +176,14 @@ CwordSolver::local_search()
 		int steps = 0;
 
 		int fscore = get_fscore();
-
-		while (true)
+		if (fscore == m_Ncst)
+		{
+			std::cout << "Solution found (steps: " << steps << ")." << std::endl;
+			print_state();
+			return;
+		}
+		
+		do
 		{
 			srand(time(NULL));
 
@@ -223,13 +229,7 @@ CwordSolver::local_search()
 				}
 			} // for-var
 
-			// No better situation found.
-			if (local_optima)
-			{
-				//print_state();
-				break; 
-			}
-		}
+		} while (!local_optima)
 
 		fails++;
 		std::cout << "Search Failed. Trial No.=" << fails << std::endl;
