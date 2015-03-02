@@ -229,7 +229,7 @@ CwordSolver::local_search()
 				}
 			} // for-var
 
-		} while (!local_optima)
+		} while (!local_optima);
 
 		fails++;
 		std::cout << "Search Failed. Trial No.=" << fails << std::endl;
